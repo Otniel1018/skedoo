@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Skedoo - Jadwal App',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -64,6 +64,18 @@ class _MyHomePageState extends State<MyHomePage> {
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       _counter++;
+      print('Counter sekarang: $_counter');
+    });
+  }
+
+  void _decrementCounter() {
+    setState(() {
+      if (_counter > 0) {
+        _counter--;
+        print('Counter Sekarang: $_counter');
+      } else {
+        print('Counter sekarang sudah tidak ada');
+      }
     });
   }
 
@@ -83,7 +95,7 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        title: Text('Jadwal Saya'),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -104,7 +116,7 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
           mainAxisAlignment: .center,
           children: [
-            const Text('You have pushed the button this many times:'),
+            const Text('Jumlah klik tombol:'),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
@@ -112,10 +124,26 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.end, // Mengatur posisi ke kanan
+        children: [
+          // Tombol Decrement
+          FloatingActionButton(
+            onPressed: _decrementCounter,
+            tooltip: 'Decrease',
+            heroTag: 'btn1',
+            child: const Icon(Icons.remove),
+          ),
+
+          const SizedBox(width: 10), // Jarak antar tombol
+          // Tombol Increment
+          FloatingActionButton(
+            onPressed: _incrementCounter,
+            tooltip: 'Increment',
+            heroTag: 'btn2',
+            child: const Icon(Icons.add),
+          ),
+        ],
       ),
     );
   }
