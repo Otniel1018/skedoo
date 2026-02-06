@@ -7,8 +7,8 @@ class Jadwal {
 
   Jadwal(this.title, this.date, this.category, this.priority, this.isDone);
 
-  void markAsDone() {
-    isDone = true;
+  void markAsDone(bool value) {
+    isDone = value;
   }
 
   String getPriorityLabel() {
