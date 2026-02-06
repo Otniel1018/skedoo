@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'models/jadwal.dart';
+import 'screens/tambah_jadwal_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -88,6 +89,16 @@ class _JadwalListPageState extends State<JadwalListPage> {
             ),
           );
         },
+      ),
+
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => TambahJadwalPage()),
+          );
+        },
+        child: Icon(Icons.add),
       ),
     );
   }
